@@ -17,7 +17,7 @@ void main() {
     () {
       mockUserRepository = MockUserRepository();
       usecase = FetchMainUser(repository: mockUserRepository);
-      user = const User(urlPhoto: 'urlPhoto', name: 'name', email: 'email');
+      user = const User(photoUrl: 'photoUrl', name: 'name', email: 'email');
     },
   );
 
@@ -39,11 +39,11 @@ void main() {
     () async {
       // arrange
       when(() => mockUserRepository.fetchMainUser())
-          .thenAnswer((_) async => Left(ProvisoryFailure()));
+          .thenAnswer((_) async => Left(ServerFailure()));
       // act
       final result = await usecase();
       // assert
-      expect(result, equals(Left(ProvisoryFailure())));
+      expect(result, equals(Left(ServerFailure())));
     },
   );
 }
