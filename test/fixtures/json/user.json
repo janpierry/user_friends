@@ -1,0 +1,10 @@
+{
+    "picture": {
+        "large": "photoUrl"
+    },
+    "name": {
+        "first": "firstName",
+        "last": "lastName"
+    },
+    "email": "email"
+}
