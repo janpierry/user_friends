@@ -1,12 +1,11 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:user_friends/modules/core/design_system/colors/app_colors.dart';
 
 class AppGradients {
   static const linear = LinearGradient(colors: [
-    AppColors.purple,
-    AppColors.white,
+    Color.fromRGBO(130, 87, 229, 0.695),
+    Color(0xFF57B6E5),
   ], stops: [
     0.0,
     0.695
