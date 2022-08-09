@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:user_friends/dependency_injection/service_locator.dart';
 import 'package:user_friends/modules/splash/presentation/pages/splash_page.dart';
 
 void main() {
+  init();
   runApp(const MyApp());
 }
 
