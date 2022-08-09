@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user_friends/dependency_injection/service_locator.dart';
-import 'package:user_friends/modules/shared/presentation/pages/error_page.dart';
+import 'package:user_friends/modules/shared/presentation/widgets/error_content.dart';
 import 'package:user_friends/modules/user_profile/presentation/widgets/profile_content.dart';
 
 import '../bloc/main_user/main_user_bloc.dart';
@@ -35,7 +35,7 @@ class UserProfileView extends StatelessWidget {
             } else if (state is MainUserLoaded) {
               return ProfileContent(mainUser: state.user);
             }
-            return ErrorPage(errorMessage: (state as MainUserError).message);
+            return ErrorContent(errorMessage: (state as MainUserError).message);
           },
         ),
       ),

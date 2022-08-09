@@ -22,12 +22,12 @@ class ProfileContent extends StatelessWidget {
         const SizedBox(height: 20),
         Text(
           mainUser.name,
-          style: AppTextStyles.body20Bold,
+          style: AppTextStyles.noto20Bold,
         ),
         const SizedBox(height: 20),
         Text(
           mainUser.email,
-          style: AppTextStyles.body,
+          style: AppTextStyles.noto16,
         ),
         const SizedBox(height: 20),
         ElevatedButton(
