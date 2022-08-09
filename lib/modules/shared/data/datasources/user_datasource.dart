@@ -33,7 +33,7 @@ class UserDatasourceImpl implements UserDatasource {
   @override
   Future<List<User>> fetchUserFriends() async {
     final response = await client.get(
-      Uri.parse('https://randomuser.me/api/?results=10'),
+      Uri.parse('https://randomuser.me/api/?results=15'),
       headers: {'Content-Type': 'application/json'},
     );
 

@@ -99,7 +99,7 @@ void main() {
         datasource.fetchUserFriends();
         // assert
         verify(() => mockClient.get(
-              Uri.parse('https://randomuser.me/api/?results=10'),
+              Uri.parse('https://randomuser.me/api/?results=15'),
               headers: {'Content-Type': 'application/json'},
             ));
       },
