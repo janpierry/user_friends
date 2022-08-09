@@ -14,7 +14,7 @@ void main() {
       userModel = const UserModel(
         photoUrl: 'photoUrl',
         email: 'email',
-        name: 'name',
+        name: 'firstName lastName',
       );
     },
   );

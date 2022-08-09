@@ -26,8 +26,9 @@ class UserDatasourceImpl implements UserDatasource {
     if (response.statusCode != 200) {
       throw ServerException();
     }
-
-    return UserModel.fromJson(json.decode(response.body));
+    return UserModel.fromJson(
+      _getUserFromJsonResponse(json.decode(response.body)),
+    );
   }
 
   @override
@@ -41,9 +42,17 @@ class UserDatasourceImpl implements UserDatasource {
       throw ServerException();
     }
 
-    Iterable list = json.decode(response.body);
+    Iterable list = _getUserFriendsFromJsonResponse(json.decode(response.body));
     List<User> userFriends =
         List<User>.from(list.map((model) => UserModel.fromJson(model)));
     return userFriends;
+  }
+
+  Map<String, dynamic> _getUserFromJsonResponse(Map<String, dynamic> json) {
+    return json['results'][0];
+  }
+
+  Iterable _getUserFriendsFromJsonResponse(Map<String, dynamic> json) {
+    return json['results'];
   }
 }

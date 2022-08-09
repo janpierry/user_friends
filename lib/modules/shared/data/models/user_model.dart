@@ -9,9 +9,13 @@ class UserModel extends User {
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
-      photoUrl: json['picture']['medium'],
-      name: json['name'],
+      photoUrl: json['picture']['large'],
+      name: _buildFullName(json['name']),
       email: json['email'],
     );
+  }
+
+  static String _buildFullName(Map<String, dynamic> jsonName) {
+    return '${jsonName['first']} ${jsonName['last']}';
   }
 }

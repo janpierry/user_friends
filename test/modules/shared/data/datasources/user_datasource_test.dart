@@ -29,7 +29,9 @@ void main() {
 
     setUp(
       () {
-        user = UserModel.fromJson(json.decode(fixture('user.json')));
+        user = UserModel.fromJson(
+          json.decode(fixture('api_user_response.json'))['results'][0],
+        );
       },
     );
 
@@ -38,7 +40,8 @@ void main() {
       () async {
         // arrange
         when(() => mockClient.get(any(), headers: any(named: "headers")))
-            .thenAnswer((_) async => http.Response(fixture('user.json'), 200));
+            .thenAnswer((_) async =>
+                http.Response(fixture('api_user_response.json'), 200));
         // act
         datasource.fetchMainUser();
         // assert
@@ -54,7 +57,8 @@ void main() {
       () async {
         // arrange
         when(() => mockClient.get(any(), headers: any(named: "headers")))
-            .thenAnswer((_) async => http.Response(fixture('user.json'), 200));
+            .thenAnswer((_) async =>
+                http.Response(fixture('api_user_response.json'), 200));
         // act
         final result = await datasource.fetchMainUser();
         // assert
@@ -82,9 +86,10 @@ void main() {
 
     setUp(
       () {
-        Iterable list = json.decode(fixture('user_friends.json'));
-        userFriends =
-            List<User>.from(list.map((model) => UserModel.fromJson(model)));
+        Iterable list = json.decode(fixture('user_friends.json'))['results'];
+        userFriends = List<User>.from(
+          list.map((model) => UserModel.fromJson(model)),
+        );
       },
     );
 

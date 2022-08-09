@@ -1,47 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:user_friends/modules/core/design_system/app_fonts.dart';
-import 'package:user_friends/modules/friends/presentation/pages/friends_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:user_friends/dependency_injection/service_locator.dart';
+import 'package:user_friends/modules/shared/presentation/pages/error_page.dart';
+import 'package:user_friends/modules/user_profile/presentation/widgets/profile_content.dart';
 
-import '../../../core/design_system/app_colors.dart';
+import '../bloc/main_user/main_user_bloc.dart';
 
 class UserProfilePage extends StatelessWidget {
   const UserProfilePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => getIt<MainUserBloc>(),
+      child: const UserProfileView(),
+    );
+  }
+}
+
+class UserProfileView extends StatelessWidget {
+  const UserProfileView({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    BlocProvider.of<MainUserBloc>(context).add(FetchMainUserEvent());
+
     return Scaffold(
       appBar: AppBar(title: const Text('User profile')),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const CircleAvatar(
-              radius: 70,
-              backgroundImage: NetworkImage(
-                  'https://randomuser.me/api/portraits/men/57.jpg'),
-              backgroundColor: AppColors.transparent,
-            ),
-            const SizedBox(height: 20),
-            Text(
-              'Full Name',
-              style: AppTextStyles.body20Bold,
-            ),
-            const SizedBox(height: 20),
-            Text(
-              'email@email.com',
-              style: AppTextStyles.body,
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const FriendsPage(),
-                      ));
-                },
-                child: const Text('See friends'))
-          ],
+        child: BlocBuilder<MainUserBloc, MainUserState>(
+          builder: (context, state) {
+            if (state is MainUserInitial || state is MainUserLoading) {
+              return const CircularProgressIndicator();
+            } else if (state is MainUserLoaded) {
+              return ProfileContent(mainUser: state.user);
+            }
+            return ErrorPage(errorMessage: (state as MainUserError).message);
+          },
         ),
       ),
     );
