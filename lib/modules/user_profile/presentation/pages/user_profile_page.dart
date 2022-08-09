@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:user_friends/modules/core/design_system/app_fonts.dart';
+import 'package:user_friends/modules/friends/presentation/pages/friends_page.dart';
 
 import '../../../core/design_system/app_colors.dart';
 
@@ -31,7 +32,15 @@ class UserProfilePage extends StatelessWidget {
               style: AppTextStyles.body,
             ),
             const SizedBox(height: 20),
-            ElevatedButton(onPressed: () {}, child: const Text('See friends'))
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const FriendsPage(),
+                      ));
+                },
+                child: const Text('See friends'))
           ],
         ),
       ),

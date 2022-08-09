@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:user_friends/modules/friends/presentation/pages/friends_page.dart';
 import 'package:user_friends/modules/splash/presentation/pages/splash_page.dart';
-import 'package:user_friends/modules/user_profile/presentation/pages/user_profile_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,7 +8,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ),
-      home: const FriendsPage(),
+      home: const SplashPage(),
       debugShowCheckedModeBanner: false,
     );
   }
