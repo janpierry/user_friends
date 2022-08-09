@@ -35,39 +35,29 @@ class AppTextStyles {
   );
 
   static final TextStyle body = GoogleFonts.notoSans(
-    color: AppColors.grey,
+    color: AppColors.black,
     fontSize: 13,
     fontWeight: FontWeight.normal,
   );
 
   static final TextStyle bodyBold = GoogleFonts.notoSans(
-    color: AppColors.grey,
+    color: AppColors.black,
     fontSize: 13,
     fontWeight: FontWeight.bold,
   );
 
-  static final TextStyle bodylightGrey = GoogleFonts.notoSans(
-    color: AppColors.lightGreen,
-    fontSize: 13,
-    fontWeight: FontWeight.normal,
-  );
-  static final TextStyle bodyDarkGreen = GoogleFonts.notoSans(
-    color: AppColors.darkGreen,
-    fontSize: 13,
-    fontWeight: FontWeight.w500,
-  );
-
-  static final TextStyle bodyDarkRed = GoogleFonts.notoSans(
-    color: AppColors.darkRed,
-    fontSize: 13,
-    fontWeight: FontWeight.w500,
+  static final TextStyle body20Bold = GoogleFonts.notoSans(
+    color: AppColors.purple,
+    fontSize: 20,
+    fontWeight: FontWeight.bold,
   );
 
   static final TextStyle body20 = GoogleFonts.notoSans(
-    color: AppColors.grey,
+    color: AppColors.purple,
     fontSize: 20,
     fontWeight: FontWeight.normal,
   );
+
   static final TextStyle bodyLightGrey20 = GoogleFonts.notoSans(
     color: AppColors.lightGrey,
     fontSize: 20,
